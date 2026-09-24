@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divya Ravi — Creative Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FCFBF8;
+    --paper-2: #F6F4EE;
+    --ink: #2B2A27;
+    --ink-soft: #7A766D;
+    --raspberry: #D6546A;
+    --raspberry-tint: #FBEEEF;
+    --raspberry-ink: #3A2426;
+    --forest: #4C6E52;
+    --khaki: #E8E0C8;
+    --rule: rgba(43,42,39,0.1);
+    --max: 980px;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #211F1C;
+      --paper-2: #29271F;
+      --ink: #F1EEE6;
+      --ink-soft: #B5AFA1;
+      --raspberry: #E88494;
+      --raspberry-tint: #362225;
+      --raspberry-ink: #FBEEEF;
+      --forest: #8FB097;
+      --khaki: #4A4630;
+      --rule: rgba(241,238,230,0.13);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #211F1C;
+    --paper-2: #29271F;
+    --ink: #F1EEE6;
+    --ink-soft: #B5AFA1;
+    --raspberry: #E88494;
+    --raspberry-tint: #362225;
+    --raspberry-ink: #FBEEEF;
+    --forest: #8FB097;
+    --khaki: #4A4630;
+    --rule: rgba(241,238,230,0.13);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (prefers-color-scheme: dark) { body::before { mix-blend-mode: overlay; opacity: 0.05; } }
+  :root[data-theme="dark"] ~ body::before, :root[data-theme="dark"] body::before { mix-blend-mode: overlay; opacity: 0.05; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--raspberry); outline-offset: 3px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- NAV ---------- */
+  header.site {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .navrow {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .navrow .mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+  }
+  .navrow nav { display: flex; gap: 26px; }
+  .navrow nav a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .navrow nav a:hover { color: var(--ink); border-color: var(--ink); }
+  @media (max-width: 560px) {
+    .navrow nav { gap: 14px; }
+    .navrow nav a { font-size: 0.82rem; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 96px 0 0; overflow: hidden; }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1fr 230px;
+    gap: 48px;
+    align-items: start;
+    padding-bottom: 64px;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero .kicker,
+  h1.name,
+  .hero-meta,
+  .colophon {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero .kicker { animation-delay: 0.02s; }
+  h1.name { animation-delay: 0.08s; }
+  .hero-meta { animation-delay: 0.22s; }
+  .colophon { animation-delay: 0.28s; }
+
+  .hero .kicker {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    max-width: 30ch;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  h1.name {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: clamp(3.3rem, 8.6vw, 6.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  h1.name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--raspberry);
+  }
+  .hero-meta {
+    margin-top: 38px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .hero-meta a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .hero-meta a:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* colophon: a small production-sheet panel, referencing print spec sheets */
+  .colophon {
+    position: relative;
+    border: 1px solid var(--rule);
+    padding: 20px;
+    font-size: 0.8rem;
+  }
+  .colophon::before, .colophon::after,
+  .colophon .cm-tl, .colophon .cm-br {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+  }
+  .colophon::before {
+    top: -1px; left: -1px;
+    border-top: 1.5px solid var(--raspberry);
+    border-left: 1.5px solid var(--raspberry);
+  }
+  .colophon::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1.5px solid var(--raspberry);
+    border-right: 1.5px solid var(--raspberry);
+  }
+  .colophon dl { display: flex; flex-direction: column; gap: 14px; }
+  .colophon .field:not(:first-child) { border-top: 1px solid var(--rule); padding-top: 12px; }
+  .colophon dt { color: var(--ink-soft); margin-bottom: 4px; font-size: 0.72rem; text-transform: lowercase; }
+  .colophon dd { font-size: 0.9rem; }
+  .colophon .swatch-row { display: flex; gap: 6px; margin-top: 10px; }
+  .colophon .swatch { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--rule); }
+
+  @media (max-width: 760px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .colophon { max-width: 260px; }
+  }
+
+  /* ---------- SIGNATURE BLOCK ---------- */
+  .signature {
+    background: var(--raspberry-tint);
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .signature .wrap {
+    padding: 56px 28px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .signature p.lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+    line-height: 1.4;
+    max-width: 34ch;
+    color: var(--ink);
+  }
+  .signature .stats { display: flex; flex-direction: column; gap: 20px; }
+  .signature .stat b {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    display: block;
+    color: var(--raspberry);
+  }
+  .signature .stat span { font-size: 0.86rem; color: var(--ink-soft); }
+  @media (max-width: 700px) {
+    .signature .wrap { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section { padding: 88px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .section-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    letter-spacing: -0.01em;
+  }
+  .section-head .count { font-size: 0.88rem; color: var(--ink-soft); white-space: nowrap; }
+
+  /* ---------- ABOUT / SKILLS ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    position: relative;
+  }
+  .about-grid::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: calc(50% - 28px);
+    width: 1px;
+    background: var(--rule);
+  }
+  .about-grid p { font-size: 1.05rem; color: var(--ink-soft); max-width: 46ch; }
+  .about-grid p + p { margin-top: 18px; }
+
+  .skill-index dl { display: grid; grid-template-columns: 1fr; row-gap: 22px; }
+  .skill-index .row { border-top: 1px solid var(--rule); padding-top: 14px; }
+  .skill-index .row:first-child { border-top: none; padding-top: 0; }
+  .skill-index dt {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .skill-index dd { font-size: 0.98rem; }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; gap: 34px; }
+    .about-grid::before { display: none; }
+  }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline { display: flex; flex-direction: column; }
+  .role {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 26px;
+    padding: 36px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .role:first-child { border-top: none; padding-top: 0; }
+  .role .dates {
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    padding-top: 6px;
+  }
+  .role h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    margin-bottom: 2px;
+  }
+  .role .company { color: var(--forest); font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
+  .role ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .role li {
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    padding-left: 18px;
+    position: relative;
+  }
+  .role li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    background: var(--raspberry);
+    border-radius: 50%;
+  }
+  @media (max-width: 640px) {
+    .role { grid-template-columns: 1fr; gap: 6px; }
+    .role .dates { padding-top: 0; margin-bottom: 8px; }
+  }
+
+  /* ---------- LEADERSHIP CALLOUT ---------- */
+  .callout {
+    background: var(--paper-2);
+  }
+  .callout .wrap { padding: 64px 28px; }
+  .callout blockquote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    line-height: 1.5;
+    max-width: 60ch;
+    border-left: 3px solid var(--raspberry);
+    padding-left: 24px;
+    margin-bottom: 24px;
+  }
+  .callout blockquote + blockquote { margin-top: -6px; }
+
+  /* ---------- SOFTWARE / TOOLS ---------- */
+  .tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 14px;
+  }
+  .tool-list span {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    padding: 9px 16px;
+    border-radius: 2px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .tool-list span:hover { border-color: var(--raspberry); color: var(--ink); }
+
+  /* ---------- EDUCATION / CERT / LANGUAGES ---------- */
+  .tri-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .tri-grid h4 {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .tri-grid .item-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .tri-grid .item-sub { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 2px; }
+  @media (max-width: 720px) {
+    .tri-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------- CONTACT FOOTER ---------- */
+  footer.contact {
+    background: var(--paper-2);
+    color: var(--ink);
+  }
+  footer.contact .wrap {
+    padding: 88px 28px 56px;
+    position: relative;
+  }
+  footer.contact .wrap::before, footer.contact .wrap::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 13px;
+  }
+  footer.contact .wrap::before {
+    top: 40px; left: 28px;
+    border-top: 1.5px solid var(--raspberry);
+    border-left: 1.5px solid var(--raspberry);
+  }
+  footer.contact .wrap::after {
+    bottom: 90px; right: 28px;
+    border-bottom: 1.5px solid var(--raspberry);
+    border-right: 1.5px solid var(--raspberry);
+  }
+  footer.contact .avail {
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  footer.contact .avail::before {
+    content: "";
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--forest);
+    margin-right: 8px;
+  }
+  footer.contact h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    line-height: 1.15;
+    margin-bottom: 38px;
+    max-width: 18ch;
+    color: var(--ink);
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 10px 34px; margin-bottom: 52px; }
+  .contact-links a {
+    text-decoration: none;
+    font-size: 1.05rem;
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 3px;
+    transition: border-color 0.15s, opacity 0.15s;
+  }
+  .contact-links a:hover { border-color: var(--raspberry); color: var(--raspberry); }
+  footer.contact .bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+
+  ::selection { background: var(--raspberry); color: var(--raspberry-ink); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <div class="mark">Divya Ravi</div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Creative Graphic Designer — brand systems, print, and digital design</p>
+      <h1 class="name">Design that<br>speaks in <em>brand</em>.</h1>
+      <div class="hero-meta">
+        <a href="mailto:designerdivya04@gmail.com">designerdivya04@gmail.com</a>
+        <a href="tel:6381245788">6381245788</a>
+        <span>Instagram / Behance: designerdivya04</span>
+      </div>
+    </div>
+    <div class="colophon">
+      <dl>
+        <div class="field">
+          <dt>discipline</dt>
+          <dd>Brand, print &amp; digital design</dd>
+        </div>
+        <div class="field">
+          <dt>based in</dt>
+          <dd>Chennai, India</dd>
+        </div>
+        <div class="field">
+          <dt>currently</dt>
+          <dd>Williams Lea by RRD</dd>
+        </div>
+        <div class="field">
+          <dt>palette</dt>
+          <div class="swatch-row">
+            <span class="swatch" style="background:var(--raspberry)"></span>
+            <span class="swatch" style="background:var(--forest)"></span>
+            <span class="swatch" style="background:var(--khaki)"></span>
+            <span class="swatch" style="background:var(--ink)"></span>
+          </div>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<div class="signature">
+  <div class="wrap">
+    <p class="lede">From dimensional QA on 3D assets to leading global brand identity systems — three years of turning a client's brief into something people trust on sight.</p>
+    <div class="stats">
+      <div class="stat"><b>3+ yrs</b><span>Professional design experience</span></div>
+      <div class="stat"><b>2</b><span>Global brand systems maintained</span></div>
+      <div class="stat"><b>3</b><span>Languages spoken</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p>Divya is a graphic designer who moves fluidly between brand systems, editorial layout, and interactive digital design — currently designing custom brand and marketing work at Williams Lea by RRD, after two years building global identity systems at Ramboll.</p>
+      <p>Her path into design ran through Amazon's 3D quality analysis team, where she audited models against exacting accuracy standards — an eye for precision that now shows up in every guideline, mockup, and layout she ships. Recognized by leadership for fast, high-quality delivery and smooth client communication.</p>
+    </div>
+    <div class="skill-index">
+      <dl>
+        <div class="row">
+          <dt>Visual design</dt>
+          <dd>Poster design, branding, typography, iconography, book design, brochure design, stylesheets & guidelines, web design, interaction design, UX/UI, mockups</dd>
+        </div>
+        <div class="row">
+          <dt>Other strengths</dt>
+          <dd>Rapid iteration, cross-functional collaboration, human-centric design approach, giving and soliciting feedback</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="count">2022 — present</span>
+    </div>
+    <div class="timeline">
+
+      <div class="role">
+        <div class="dates">Feb 2025 —<br>Present</div>
+        <div>
+          <h3>Creative Graphic Designer</h3>
+          <div class="company">Williams Lea by RRD</div>
+          <ul>
+            <li>Delivered custom brand and marketing designs aligned with client brand guidelines</li>
+            <li>Partnered with art directors to translate business goals into effective visual solutions</li>
+            <li>Managed multiple projects simultaneously, ensuring on-time, specification-accurate delivery</li>
+            <li>Adapted design solutions across multiple industries and brand systems</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="dates">Sep 2023 —<br>Feb 2025</div>
+        <div>
+          <h3>Associate Graphic Designer</h3>
+          <div class="company">Ramboll</div>
+          <ul>
+            <li>Developed and maintained brand identity systems across digital and print platforms, ensuring global visual consistency</li>
+            <li>Led creation of marketing and campaign assets supporting sustainability-focused initiatives</li>
+            <li>Designed interactive and animated PDFs, improving content clarity and user understanding</li>
+            <li>Created user-centric digital assets for websites, social media, and paid campaigns</li>
+            <li>Collaborated with marketing stakeholders to deliver on-brand, high-quality visuals under tight timelines</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="dates">May 2022 —<br>Sep 2023</div>
+        <div>
+          <h3>3D Quality Analyst</h3>
+          <div class="company">Shreejen Association (Amazon)</div>
+          <ul>
+            <li>Conducted dimensional analysis and quality audits for 3D assets</li>
+            <li>Ensured compliance with platform standards, reducing rework and visual inconsistencies</li>
+            <li>Audited and validated 3D models to meet accuracy and quality benchmarks</li>
+            <li>Identified quality gaps in 3D deliverables and rectified issues to maintain high standards for customer-facing content</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="callout">
+  <div class="wrap">
+    <blockquote>Recognized for exceptional client communication and proactive design coordination — enabling faster turnaround and reduced revision cycles.</blockquote>
+    <blockquote>Commended by global Art Director leadership for high-quality delivery and rapid adaptation to enterprise workflows.</blockquote>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tools</h2>
+    </div>
+    <div class="tool-list">
+      <span>Adobe InDesign</span>
+      <span>Illustrator</span>
+      <span>Photoshop</span>
+      <span>Figma</span>
+      <span>PowerPoint</span>
+      <span>Maya (working knowledge)</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Education & credentials</h2>
+    </div>
+    <div class="tri-grid">
+      <div>
+        <h4>Education</h4>
+        <div class="item-title">B.Sc. Zoology</div>
+        <div class="item-sub">Bharathidasan Govt. College for Women</div>
+        <div class="item-sub">May 2018 — Aug 2021</div>
+      </div>
+      <div>
+        <h4>Certification</h4>
+        <div class="item-title">Certified Graphic & UI Designer</div>
+        <div class="item-sub">Akash Media College — Design Practitioner</div>
+        <div class="item-sub">Dec 2023 — May 2024</div>
+        <div class="item-sub">Graphic standards, conceptual design direction, client presentations</div>
+      </div>
+      <div>
+        <h4>Languages</h4>
+        <div class="item-title">English</div>
+        <div class="item-title">Tamil</div>
+        <div class="item-title">French <span style="font-family:'Inter'; font-weight:400; font-size:0.85rem; color:var(--ink-soft);">(writing knowledge)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <p class="avail">Open to freelance and full-time roles</p>
+    <h2>Let's design something worth noticing.</h2>
+    <div class="contact-links">
+      <a href="mailto:designerdivya04@gmail.com">designerdivya04@gmail.com</a>
+      <a href="tel:6381245788">6381245788</a>
+      <a href="#">@designerdivya04</a>
+    </div>
+    <div class="bottom">
+      <span>Divya Ravi — Creative Graphic Designer</span>
+      <span>Chennai, Tamil Nadu</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
